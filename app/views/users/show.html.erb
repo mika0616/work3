@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<!-- success-message -->
+		<% if flash[:notice] %>
+		  <p><%= flash[:notice] %></p>
+		<% end %>
+
+		<!-- sidebar -->
+		<%= render 'books/list' %>
+
+		<div class="col-md-9">
+			<h2>Books</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>User</th>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @books.each do |book| %>
+					<tr>
+						<td>
+						  <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format:'jpeg', fallback:'no_image.jpeg' %>
+						</td>
+						<td>
+						  <%= link_to book_path(book.id) do %>
+							<%= book.title %>
+						  <% end %>
+						</td>
+						<td><%= book.body %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
