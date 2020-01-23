@@ -3,10 +3,6 @@
   <head>
     <title>BookersLevel2</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -24,19 +20,13 @@
           <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li>
-              <%= link_to user_path(current_user.id) do %>
-                <span class="glyphicon glyphicon-home" aria-hidden="true">Home
-              <% end %>
+              <%= link_to 'Home', user_path(current_user.id), class:"glyphicon glyphicon-home" %>
             </li>
             <li>
-              <%= link_to users_path do %>
-              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>User
-              <% end %>
+              <%= link_to 'Users', users_path, class:"glyphicon glyphicon-user" %>
             </li>
             <li>
-              <%= link_to books_path do %>
-              <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Book
-              <% end %>
+              <%= link_to 'Books', books_path, class:"glyphicon glyphicon-book" %>
             </li>
             <li>
               <%= link_to 'logout', destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %>
@@ -46,10 +36,10 @@
               <%= link_to 'Home', root_path, class:"glyphicon glyphicon-home" %>
             </li>
             <li>
-              <%= link_to 'About', homes_about_path, class:"glyphicon glyphicon-link" %>
+              <%= link_to 'About', home_about_path, class:"glyphicon glyphicon-link" %>
             </li>
             <li>
-              <%= link_to 'sign up', new_user_registration_path, class:"glyphicon glyphicon-edit" %>
+              <%= link_to 'Sign up', new_user_registration_path, class:"glyphicon glyphicon-edit" %>
             </li>
             <li>
               <%= link_to 'login', new_user_session_path, class:"glyphicon glyphicon-log-in" %>
@@ -60,7 +50,11 @@
       </div>
     </header>
 
-    <%= yield %>
+      <div class="container">
+        <div class="row">
+            <%= yield %>
+        </div>
+      </div>
 
     <footer>
       <div class="container">
